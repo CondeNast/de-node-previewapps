@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p CNPreview #{title}
+
+  form#new_post.new_post(method='post', action='/posts/vanityfair')
+      .field
+          label(for='email') Email
+          br
+          input#email(type='text', name='email', size='30')
+      .field
+        label(for='password') Password
+        br
+        input#password(type='password', name='password')
+        br
+        br
+      .actions
+        input#post_submit(type='submit', value='Download Preview App')

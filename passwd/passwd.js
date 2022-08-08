@@ -1,4 +1,3 @@
-const bcrypt = require("bcryptjs");
 var passwd_db = [
         {
             key: "ad-FolioReview@condenast.com",
