@@ -11,19 +11,19 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://stagpublish.condenast.com:3000/previewapps/vanityfair/manifest.plist</string>
+					<string>https://stagpublish.condenast.com:3001/previewapps/vanityfair/manifest.plist</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>display-image</string>
 					<key>url</key>
-					<string>https://stagpublish.condenast.com:3000/previewapps/vanityfair/vf114x114_store.png</string>
+					<string>https://stagpublish.condenast.com:3001/previewapps/vanityfair/vf114x114_store.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>full-size-image</string>
 					<key>url</key>
-					<string>https://stagpublish.condenast.com:3000/previewapps/vanityfair/vf512x512_store.png</string>
+					<string>https://stagpublish.condenast.com:3001/previewapps/vanityfair/vf512x512_store.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
