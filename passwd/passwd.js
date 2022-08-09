@@ -1,42 +1,42 @@
 var passwd_db = [
         {
-            key: "ad-FolioReview@condenast.com",
-            hash: "$2a$10$9/mi8l48Qqo8vBmGOirxH.LxzXBcp4IOKjK5kGHp1Ne9HpJImckau",
+            key: "AD-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.FtT4.v4X1KE8UTkSXeVszdVREPnG.Xe",
             magazine: "archdigest"
         },
         {
-            key: "al-FolioReview@condenast.com",
-            hash: "$2a$10$jtVqipGMIBLXmFipLvmELu83PCkwZBmP9OjexOMdc4B70adluB9XW",
+            key: "AL-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.GaQULf078Plv0WHrA0l3hWR/1B9/w8y",
             magazine: "allure"
         },
         {
-            key: "ba-FolioReview@condenast.com",
-            hash: "$2a$10$BSib1EhEjeQ686ZpLzmh4O6jvRn.TcI2Oi7f7y/j34HZHbs22MXaK",
+            key: "BA-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.lJbN9cTWHaTMvAj8RTr0s.EKxjj6FZC",
             magazine: "bonappetit"
         },
         {
-            key: "GQ-FolioReview@condenast.com",
-            hash: "$2a$10$fkMqyg6Bdb5vRAtPgCy4zOKOYUqrQjdtuiadwg26YZJyYNB7I0k5S",
+            key: "GQ-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.FD4RuhWPSCdJRYi.tnQCK4frGt0dISi",
             magazine: "gq"
         },
         {
-            key: "tr-FolioReview@condenast.com",
-            hash: "$2a$10$HEgW3CrZgHhrfndSN39pN.E2aHAK1Sf8mEZBHubMGaBcS.1YI2R82",
+            key: "TR-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5./UMeei/wQhua6h7QZ7YTqXo8dJ7ORqe",
             magazine: "traveler"
         },
         {
-            key: "VF-FolioReview@condenast.com",
-            hash: "$2a$10$1ASrd0FU/rB6HB3figwZVutMZCOCPyusjBu2QvImu4tkS3EFbu8ce",
+            key: "VF-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.BINkj9cNJlajZQawLaD/MsiWQb.HiM6",
             magazine: "vanityfair"
         },
         {
-            key: "VO-FolioReview@condenast.com",
-            hash: "$2a$10$X95K90lx9q4VUJJMfZt/ke7NRSQhuqXMNPtZZ66yFrJQ6tC4jMVJa",
+            key: "VO-DE-Review@condenast.com ",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.ly5cGENkPVZ/lG3e7afrmDvZ.uHEsl2",
             magazine: "vogue"
         },
         {
-            key: "WI-FolioReview@condenast.com",
-            hash: "$2a$10$pQk6x2JmMFhcnl3.TXQeieHpJy/LT.3CXmwbPKejosuRNr4EG4CL6",
+            key: "WI-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.g3AzNk1tq.uo7sA1.2yTAT5G8GooXvy",
             magazine: "wired"
         }
 ]
@@ -55,7 +55,10 @@ exports.match = function(key, password) {
 exports.test = function() {
     var bcrypt = require('bcryptjs');
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync("testest", salt);
+    var hash = '';
+    for(const record of passwd_db) {
+       hash = bcrypt.hashSync(record.hash, salt);
+    }
 
     var ismatch = bcrypt.compareSync("testest", hash); // true
     var nomatch = bcrypt.compareSync("not_bacon", hash); // false
