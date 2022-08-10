@@ -15,6 +15,11 @@ var passwd_db = [
             magazine: "bonappetit"
         },
         {
+            key: "de.condenast@gmail.com",
+            hash: "$2a$10$lW8U1ChNcJyYsmtDsL.ao.TXSlljFDyMbXlhYDrEw8XzAdSCUE80y",
+            magazine: "cngeneric"
+        },
+        {
             key: "GQ-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.FD4RuhWPSCdJRYi.tnQCK4frGt0dISi",
             magazine: "gq"
