@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var cnPreviewRouter = require('./routes/cnpreview');
 var cnPasswordRouter = require('./routes/cnpassword');
-var downloadRouter = require('./routes/download');
+var cnDownloadRouter = require('./routes/cndownload');
 
 var app = express();
 
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/cnpreview/*', cnPreviewRouter);
 app.use('/posts', cnPasswordRouter);
-app.use('/previewapps/*', downloadRouter);
+app.use('/previewapps/*', cnDownloadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -34,6 +34,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  var test = req.app.get('env');
 
   // render the error page
   res.status(err.status || 500);
