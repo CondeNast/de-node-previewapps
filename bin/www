@@ -3,32 +3,22 @@
 /**
  * Module dependencies.
  */
-var fs = require('fs');
 var http = require('http');
-var https = require('https');
-var privateKey  = fs.readFileSync('sslcert/private.pem', 'utf8');
-var certificate = fs.readFileSync('sslcert/public.pem', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
 var app = require('../app');
 var debug = require('debug')('de-node-previewapps:server');
-var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
 
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-var port2 = normalizePort(process.env.PORT2 || '3001');
 app.set('port', port);
-app.set('port2', port2);
 
 /**
  * Create HTTP server.
  */
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -37,9 +27,6 @@ var httpsServer = https.createServer(credentials, app);
 httpServer.listen(port);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
-httpsServer.listen(port2);
-httpsServer.on('error', onError);
-httpsServer.on('listening', onListening2);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -98,13 +85,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
-
-function onListening2() {
-  var addr = httpsServer.address();
-  var bind = typeof addr === 'string'
-      ? 'pipe ' + addr
-      : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
