@@ -1,9 +1,9 @@
 exports.serverUrl = function(req) {
     var server = 'http://localhost:3000';
     if(req.app.get('env') === 'production') {
-        server = 'https://conde.io:3000';
+        server = 'https://preview.condenast.com';
     } else if(req.app.get('env') === 'staging') {
-        server = 'https://stagpublish.condenast.com:3001';
+        server = 'http://stagpublish.condenast.com:3000';
     }
     return server;
 }
