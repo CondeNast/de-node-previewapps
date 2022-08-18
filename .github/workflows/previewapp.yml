@@ -40,7 +40,7 @@ jobs:
 
 
      - name: Deploy application to EKS
-       uses: ./.github/actions/eks-deployer
+       uses: CondeNast/devops-ghactions-helm-eks-deployer@master
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
        with:
