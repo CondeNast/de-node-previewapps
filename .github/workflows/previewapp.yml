@@ -47,8 +47,7 @@ jobs:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: us-east-1
-       with:
-        command: |
+       run: |
           sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
           helm upgrade previewapps-prod-helm --install --wait ./kubeconfigs/ -f ./kubeconfigs/values.yaml --namespace previewapps-prod
           kubectl get pods -n previewapps-prod
