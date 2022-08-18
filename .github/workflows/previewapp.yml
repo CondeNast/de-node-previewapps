@@ -40,7 +40,7 @@ jobs:
 
 
      - name: Deploy application to EKS
-       uses: ./.github/actions/devops-ghactions-helm-eks-deployer
+       uses: ./.github/actions/eks-deployer
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
        with:
