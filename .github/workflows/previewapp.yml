@@ -42,24 +42,25 @@ jobs:
      name: Deploy appication to EKS
      runs-on: ubuntu-latest
      needs: build
+     container:
+       image: public.ecr.aws/h7p9s7g1/lit-deploy:1.19.10-3.2.4
 
      steps:  
      - name: git checkout 
        uses: actions/checkout@v2
 
-     - name: Configure AWS credentials
-       uses: aws-actions/configure-aws-credentials@v1
-       with:
-         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         aws-region: us-east-1
+     - name: Set the tag for application docker image in ECR
+       shell: bash
+       run: |
+         sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
 
-     - name: Deploy application to EKS
-       uses: docker://public.ecr.aws/z2u3g7p8/devops/actions-eks-deployer:v1
-       env:
-         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-         
-       with: |
-          sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
+     - name: set kubernetes context
+       run: aws eks --region us-east-1 update-kubeconfig --name devops-conde-prod01
+
+     - name: Deploy application to EKS using helm
+       run: | 
           helm upgrade previewapps-prod-helm --install --wait ./kubeconfigs/ -f ./kubeconfigs/values.yaml --namespace previewapps-prod
+          
+     - name: summary
+       run: | 
           kubectl get pods -n previewapps-prod
