@@ -59,7 +59,7 @@ jobs:
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
          
-       run: |
+       with: |
           sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
           helm upgrade previewapps-prod-helm --install --wait ./kubeconfigs/ -f ./kubeconfigs/values.yaml --namespace previewapps-prod
           kubectl get pods -n previewapps-prod
