@@ -39,7 +39,7 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
   
    Deploy:
-    name: Deploy appication to EKS
+     name: Deploy appication to EKS
      runs-on: ubuntu-latest
      container:
        image: public.ecr.aws/z2u3g7p8/devops/actions-eks-deployer:v1
