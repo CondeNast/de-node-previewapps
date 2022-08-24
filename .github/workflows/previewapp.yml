@@ -26,7 +26,7 @@ jobs:
        uses: aws-actions/configure-aws-credentials@v1
        with:
          aws-region: us-east-1
-         
+
      - name: Login to Amazon ECR
        id: login-ecr
        uses: aws-actions/amazon-ecr-login@v1
@@ -57,7 +57,7 @@ jobs:
          sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
 
      - name: set kubernetes context
-       run: aws eks update-kubeconfig --name devops-conde-prod01
+       run: aws eks --region $aws-region update-kubeconfig --name devops-conde-prod01
 
      - name: Deploy application to EKS using helm
        run: | 
