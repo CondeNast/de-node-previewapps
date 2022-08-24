@@ -57,7 +57,7 @@ jobs:
          sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
 
      - name: set kubernetes context
-       run: aws eks --region $aws-region update-kubeconfig --name devops-conde-prod01
+       run: aws eks --region us-east-1 update-kubeconfig --name devops-conde-prod01
 
      - name: Deploy application to EKS using helm
        run: | 
