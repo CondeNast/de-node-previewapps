@@ -1,0 +1,70 @@
+name: previewapps-prod
+
+on:
+  pull_request:
+     branches: [master]
+     types:
+      - closed
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
+  aws-region: us-east-1
+
+jobs:
+
+   build: 
+     if: github.event.pull_request.merged == true
+     name: Build Docker image and push it to ECR
+     runs-on: ubuntu-latest
+
+     steps:
+     - name: git checkout 
+       uses: actions/checkout@v2
+
+
+     - name: Configure AWS credentials
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+         aws-region: us-east-1
+
+     - name: Login to Amazon ECR
+       id: login-ecr
+       uses: aws-actions/amazon-ecr-login@v1
+
+     - name: Build, tag, and push docker image to Amazon ECR
+       env:
+         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+         REPOSITORY: previewapps-prod
+         IMAGE_TAG: ${{ github.sha }}
+       run: |
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+  
+   Deploy:
+     if: github.event.pull_request.merged == true
+     name: Deploy appication to EKS
+     runs-on: ubuntu-latest
+     needs: build
+     container:
+       image: public.ecr.aws/h7p9s7g1/lit-deploy:1.19.10-3.2.4
+
+     steps:  
+     - name: git checkout 
+       uses: actions/checkout@v2
+
+     - name: Set the tag for application docker image in ECR
+       shell: bash
+       run: |
+         sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
+
+     - name: set kubernetes context
+       run: aws eks --region us-east-1 update-kubeconfig --name devops-conde-prod01
+
+     - name: Deploy application to EKS using helm
+       run: | 
+          helm upgrade previewapps-prod-helm --install --wait ./kubeconfigs/ -f ./kubeconfigs/values.yaml --namespace previewapps-prod
+          
+     - name: Summary
+       run: | 
+          kubectl get pods -n previewapps-prod
