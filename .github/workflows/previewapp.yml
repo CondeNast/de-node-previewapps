@@ -41,10 +41,14 @@ jobs:
    Deploy:
      name: Deploy appication to EKS
      runs-on: ubuntu-latest
+     needs: build
      container:
        image: public.ecr.aws/z2u3g7p8/devops/actions-eks-deployer:v1
 
      steps:  
+     - name: git checkout 
+       uses: actions/checkout@v2
+
      - name: Deploy application to EKS
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
