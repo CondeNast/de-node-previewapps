@@ -9,11 +9,12 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
+  aws-region: us-east-1
 
 jobs:
 
    build: 
-     name: Build Docker image and deploy appication to EKS
+     name: Build Docker image and push it to ECR
      runs-on: ubuntu-latest
 
      steps:
@@ -23,10 +24,6 @@ jobs:
 
      - name: Configure AWS credentials
        uses: aws-actions/configure-aws-credentials@v1
-       with:
-         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         aws-region: us-east-1
 
      - name: Login to Amazon ECR
        id: login-ecr
@@ -58,12 +55,12 @@ jobs:
          sed -i -e "s/PROD-IMAGE-VERSION/${{ github.sha }}/g" ./kubeconfigs/values.yaml
 
      - name: set kubernetes context
-       run: aws eks --region us-east-1 update-kubeconfig --name devops-conde-prod01
+       run: aws eks --region ${{ aws_region }} update-kubeconfig --name devops-conde-prod01
 
      - name: Deploy application to EKS using helm
        run: | 
           helm upgrade previewapps-prod-helm --install --wait ./kubeconfigs/ -f ./kubeconfigs/values.yaml --namespace previewapps-prod
           
-     - name: summary
+     - name: Summary
        run: | 
           kubectl get pods -n previewapps-prod
