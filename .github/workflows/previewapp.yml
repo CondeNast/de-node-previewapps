@@ -12,9 +12,7 @@ jobs:
    build: 
      name: Build Docker image and deploy appication to EKS
      runs-on: ubuntu-latest
-     container:
-       image: public.ecr.aws/z2u3g7p8/devops/actions-eks-deployer:v1
-  
+
      steps:
      - name: git checkout 
        uses: actions/checkout@v2
@@ -39,6 +37,14 @@ jobs:
        run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+  
+   Deploy:
+    name: Deploy appication to EKS
+     runs-on: ubuntu-latest
+     container:
+       image: public.ecr.aws/z2u3g7p8/devops/actions-eks-deployer:v1
+
+     steps:  
      - name: Deploy application to EKS
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
