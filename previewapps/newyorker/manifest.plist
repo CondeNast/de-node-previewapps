@@ -29,7 +29,7 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.condenast.pugpigdraft.archdigest</string>
+				<string>com.condenast.pugpigdraft.newyorker</string>
 				<key>bundle-version</key>
 				<string>5.5</string>
 				<key>kind</key>
@@ -37,7 +37,7 @@
 				<key>platform-identifier</key>
 				<string>com.apple.platform.iphoneos</string>
 				<key>title</key>
-				<string>architecturaldigest</string>
+				<string>newyorker</string>
 			</dict>
 		</dict>
 	</array>
