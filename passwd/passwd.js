@@ -72,5 +72,5 @@ exports.test = function() {
 
     var ismatch = bcrypt.compareSync("testest", hash); // true
     var nomatch = bcrypt.compareSync("not_bacon", hash); // false
-    var isSame = this.match("caitlin_martin@newyorker.com","8wt_xh648s");
+    var isSame = this.match("someone@somewhere","XXXX");
 }
