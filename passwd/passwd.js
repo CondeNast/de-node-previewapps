@@ -25,6 +25,11 @@ var passwd_db = [
             magazine: "gq"
         },
         {
+            key: "caitlin_martin@newyorker.com",
+            hash: "$2a$10$LjQz9OusVFG65/SgRdEg/.ljSLnYG9S8F97DKLLMUwAMYlaF/m5dO",
+            magazine: "newyorker"
+        },
+        {
             key: "TR-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5./UMeei/wQhua6h7QZ7YTqXo8dJ7ORqe",
             magazine: "traveler"
@@ -67,5 +72,5 @@ exports.test = function() {
 
     var ismatch = bcrypt.compareSync("testest", hash); // true
     var nomatch = bcrypt.compareSync("not_bacon", hash); // false
-    var isSame = this.match("AD-FolioReview@condenast.com","xxx");
+    var isSame = this.match("someone@somewhere","XXXX");
 }
