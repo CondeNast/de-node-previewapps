@@ -40,7 +40,7 @@ var passwd_db = [
             magazine: "vanityfair"
         },
         {
-            key: "VO-DE-Review@condenast.com ",
+            key: "VO-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.ly5cGENkPVZ/lG3e7afrmDvZ.uHEsl2",
             magazine: "vogue"
         },
