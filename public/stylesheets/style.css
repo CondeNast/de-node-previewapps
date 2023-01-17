@@ -30,7 +30,7 @@ body {
 .container,
 .form__input,
 .form__button {
-  font: 500 1rem 'Quicksand', sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
 }
 
 .form--hidden {
