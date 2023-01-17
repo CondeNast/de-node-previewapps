@@ -126,6 +126,7 @@ body {
   color: var(--color-secondary);
   text-decoration: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .form__link:hover {
