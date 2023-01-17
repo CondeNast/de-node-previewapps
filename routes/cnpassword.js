@@ -12,7 +12,7 @@ router.post('/', function(req, res, next) {
         magazine_info = passwd.match(email,password);
     }
     if(magazine_info.magazine !== '') {
-        res.render('cndownload', { title: magazine_info.display_name, server: server.serverUrl(req) });
+        res.render('cndownload', { title: magazine_info.display_name, magazine: magazine_info.magazine, server: server.serverUrl(req) });
     } else {
         res.render('error', {message: 'Bad email or password', error: {status: 'User error', stack: 'Incorrect username or password'}})
     }
