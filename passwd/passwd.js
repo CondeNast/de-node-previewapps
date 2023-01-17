@@ -56,7 +56,9 @@ exports.match = function(key, password) {
     for(const record of passwd_db) {
         if(key.toLowerCase() === record.key.toLowerCase()) {
             var isSame = bcrypt.compareSync(password, record.hash);
-            return record.magazine;
+            if(isSame === true) {
+                return record.magazine;
+            }
         }
     }
     return '';
