@@ -14,19 +14,21 @@ html
     body
 
         block content
-          h1= title
-          p CNPreview #{title}
 
-          form#new_post.new_post(method='post', action='/posts')
-              .field
-                  label(for='email') Email
-                  br
-                  input#email(type='text', name='email', size='30')
-              .field
-                label(for='password') Password
-                br
-                input#password(type='password', name='password')
-                br
-                br
-              .actions
-                input#post_submit(type='submit', value='Download Preview App')
+            div(class="container")
+                div
+                    h1(class="form__title") #{title}
+                    p(class="form__message") CNPreview #{title}
+
+                form#new_post.new_post(method='post', action='/posts')
+                  .field(class="form__input-group")
+                      label(class="form__text" for='email') Email
+                      br
+                      input(class="form__input")#email(type='text', name='email', size='30')
+                  .field(class="form__input-group")
+                    label(class="form__text" for='password') Password
+                    br
+                    input(class="form__input")#password(type='password', name='password')
+                    br
+                  .actions
+                    input(class="form__button")#post_submit(type='submit', value='Download Preview App')
