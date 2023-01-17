@@ -7,12 +7,12 @@ var server = require('../util/cnserver');
 router.post('/', function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
-    var magazine = '';
+    var magazine_info = {};
     if(email && password) {
-        magazine = passwd.match(email,password);
+        magazine_info = passwd.match(email,password);
     }
-    if(magazine !== '') {
-        res.render('cndownload', { title: magazine, server: server.serverUrl(req) });
+    if(magazine_info.magazine !== '') {
+        res.render('cndownload', { title: magazine_info.display_name, magazine: magazine_info.magazine, server: server.serverUrl(req) });
     } else {
         res.render('error', {message: 'Bad email or password', error: {status: 'User error', stack: 'Incorrect username or password'}})
     }

@@ -30,7 +30,7 @@ body {
 .container,
 .form__input,
 .form__button {
-  font: 500 1rem 'Quicksand', sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
 }
 
 .form--hidden {
@@ -61,6 +61,8 @@ body {
 
 .form__message--error {
   color: var(--color-error);
+  text-align: center;
+  font-weight: 300;
 }
 
 .form__input-group {
@@ -121,11 +123,16 @@ body {
 }
 
 .form__link {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-decoration: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .form__link:hover {
   text-decoration: underline;
+}
+
+.form__link:active {
+  color: var(--color-primary);
 }
