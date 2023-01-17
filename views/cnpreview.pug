@@ -1,16 +1,19 @@
 extends layout
 
+block meta
+    title="Download Preview App"
+
 block content
     div(class="container")
         div
-            h1(class="form__title") #{title}
-            p(class="form__message") CNPreview #{title}
+            h1(class="form__title") Signin
+            //p(class="form__message") CNPreview #{title}
 
         form#new_post.new_post(method='post', action='/posts')
           .field(class="form__input-group")
-              input(class="form__input")#email(type='text', name='email', size='30' autofocus placeholder='Username or email')
+              input(class="form__input")#email(type='text', name='email', size='30' autofocus placeholder='email')
           .field(class="form__input-group")
-            input(class="form__input")#password(type='password', name='password' autofocus placeholder='Password')
+            input(class="form__input")#password(type='password', name='password' autofocus placeholder='password')
             br
           .actions
-            input(class="form__button")#post_submit(type='submit', value='Download Preview App')
+            input(class="form__button")#post_submit(type='submit', value='Continue')

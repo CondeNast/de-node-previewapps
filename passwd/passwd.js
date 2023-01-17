@@ -2,7 +2,8 @@ var passwd_db = [
         {
             key: "AD-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.FtT4.v4X1KE8UTkSXeVszdVREPnG.Xe",
-            magazine: "archdigest"
+            magazine: "archdigest",
+            display_name: "Architectural Digest"
         },
         {
             key: "AL-DE-Review@condenast.com",
