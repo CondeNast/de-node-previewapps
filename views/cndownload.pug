@@ -7,7 +7,8 @@ block content
     div(class="container")
         h1(class="form__title")= title
 
-        <a href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{magazine}/manifest.plist" class="form__button">Install</a>
+        div(class="form__button")
+            <a href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{magazine}/manifest.plist">Install</a>
 
         p(class="form__link")
             a(href="/") Back to Sign In
