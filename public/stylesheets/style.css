@@ -132,3 +132,7 @@ body {
 .form__link:hover {
   text-decoration: underline;
 }
+
+.form__link:active {
+  color: var(--color-primary);
+}
