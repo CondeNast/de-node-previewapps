@@ -8,10 +8,10 @@
   "dependencies": {
     "cookie-parser": "~1.4.*",
     "debug": "~2.6.*",
-    "express": "~4.16.*",
+    "express": "4.*",
     "http-errors": "~1.6.*",
     "morgan": "~1.9.*",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.*",
     "bcryptjs": "~2.4.*"
   }
 }
