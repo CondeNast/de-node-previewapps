@@ -21,9 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/cnpreview/*', cnPreviewRouter);
+app.use('/cnpreview', cnPreviewRouter);
+app.use('/', cnPreviewRouter);
 app.use('/posts', cnPasswordRouter);
 app.use('/previewapps/*', cnDownloadRouter);
-app.use('/*', cnPreviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
