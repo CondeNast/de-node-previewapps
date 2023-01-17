@@ -51,13 +51,13 @@ var passwd_db = [
             key: "VO-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.ly5cGENkPVZ/lG3e7afrmDvZ.uHEsl2",
             magazine: "vogue",
-            display_name: "VOGUE"
+            display_name: "Vogue"
         },
         {
             key: "WI-DE-Review@condenast.com",
             hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.g3AzNk1tq.uo7sA1.2yTAT5G8GooXvy",
             magazine: "wired",
-            display_name: "WIRED"
+            display_name: "Wired"
         }
 ]
 
