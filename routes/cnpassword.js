@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
     if(magazine !== '') {
         res.render('cndownload', { title: magazine, server: server.serverUrl(req) });
     } else {
-        res.render('error', {message: 'Bad email or password', error: {status: 'User error', stack: 'Problem with username or password'}})
+        res.render('error', {message: 'Bad email or password', error: {status: 'User error', stack: 'Incorrect username or password'}})
     }
 });
 

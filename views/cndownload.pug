@@ -6,6 +6,5 @@ block meta
 block content
     div(class="container")
         h1(class="form__title")= title
-        p(class="form__message--status") #{title} Preview App
 
-        <a href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{title}/manifest.plist" class="form__link">Install App</a>
+        <button href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{title}/manifest.plist" class="form__button">Install</button>
