@@ -61,6 +61,8 @@ body {
 
 .form__message--error {
   color: var(--color-error);
+  text-align: center;
+  font-weight: 300;
 }
 
 .form__input-group {
