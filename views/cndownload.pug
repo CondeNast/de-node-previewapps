@@ -8,7 +8,7 @@ block content
         h1(class="form__title")= title
 
         button(class="form__button")
-            <a href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{magazine}/manifest.plist">Install</a>
+            <a class="form__button--link" href="itms-services://?action=download-manifest&url=#{server}/previewapps/#{magazine}/manifest.plist">Install</a>
 
         p(class="form__link")
-            a(href="/") Back to Sign In
+            a(href="/" class="form__link") Back to Sign In
