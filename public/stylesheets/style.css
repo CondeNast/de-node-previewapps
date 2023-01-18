@@ -118,11 +118,17 @@ body {
   transform: scale(0.98);
 }
 
+a.form__button--link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .form__text {
   text-align: center;
 }
 
-.form__link {
+.form__link,
+a.form__link {
   color: var(--color-primary);
   text-decoration: none;
   cursor: pointer;
