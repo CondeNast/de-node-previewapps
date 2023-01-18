@@ -1,4 +1,3 @@
-const bcrypt = require("bcryptjs");
 var passwd_db = [
         {
             key: "AD-DE-Review@condenast.com",
@@ -81,7 +80,7 @@ exports.test = function() {
     var salt = bcrypt.genSaltSync(10);
     var hash = '';
     for(const record of passwd_db) {
-       hash = bcrypt.hash(record.hash, salt);
+       hash = bcrypt.hashSync(record.hash, salt);
     }
 
     bcrypt.hash("sample password",salt, function(err, hash) {
