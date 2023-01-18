@@ -17,6 +17,10 @@ body {
   background-size: cover;
 }
 
+h1 {
+  font-weight: 400;
+}
+
 .container {
   width: 400px;
   max-width: 400px;
