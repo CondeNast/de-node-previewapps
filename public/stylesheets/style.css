@@ -65,8 +65,9 @@ h1 {
 
 .form__message--error {
   color: var(--color-error);
+  font-family: Roboto;
+  font-weight: 400;
   text-align: center;
-  font-weight: 300;
 }
 
 .form__input-group {
