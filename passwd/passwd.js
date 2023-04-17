@@ -12,8 +12,8 @@ var passwd_db = [
             display_name: "Allure"
         },
         {
-            key: "BA-DE-Review@condenast.com",
-            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.lJbN9cTWHaTMvAj8RTr0s.EKxjj6FZC",
+            key: "_1fbe70@condenast.com",
+            hash: "$2a$10$z1z.W71wV2A70mb/JOV/M.QAzNI2VSJLogydmMyn69ARBS.0q74B.",
             magazine: "bonappetit",
             display_name: "Bon Appétit"
         },
