@@ -12,8 +12,8 @@ var passwd_db = [
             display_name: "Allure"
         },
         {
-            key: "_1fbe70@condenast.com",
-            hash: "$2a$10$z1z.W71wV2A70mb/JOV/M.QAzNI2VSJLogydmMyn69ARBS.0q74B.",
+            key: "BA-DE-Review@condenast.com",
+            hash: "$2a$10$AUs8Co7OcHn/9xKLXQzK5.lJbN9cTWHaTMvAj8RTr0s.EKxjj6FZC",
             magazine: "bonappetit",
             display_name: "Bon Appétit"
         },
@@ -32,6 +32,12 @@ var passwd_db = [
         {
             key: "caitlin_martin@newyorker.com",
             hash: "$2a$10$LjQz9OusVFG65/SgRdEg/.ljSLnYG9S8F97DKLLMUwAMYlaF/m5dO",
+            magazine: "newyorker",
+            display_name: "The New Yorker"
+        },
+        {
+            key: "production@newyorker.com",
+            hash: "$2a$10$z1z.W71wV2A70mb/JOV/M.QAzNI2VSJLogydmMyn69ARBS.0q74B.",
             magazine: "newyorker",
             display_name: "The New Yorker"
         },
