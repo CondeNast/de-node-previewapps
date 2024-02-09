@@ -3,7 +3,7 @@
 # specify the node base image with your desired version node:<version>
 
 # Create app directory
-FROM node:16.15.1
+FROM node:20.11.0
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
