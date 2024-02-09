@@ -13,4 +13,4 @@ Editorial, marketing, and Pubwerks need to review digital editions for magazines
 
 Each brand has a preview app stored in `previewapps/<magazine name>/<magazine name>.ipa`. You can replace the ipa file with the latest version and ask devops to redeploy the preview app server. You should not need to modify the `manifest.plist` files when you update the ipa files.
 
-Should be easier with new Xcode.
+Should be easier with new Xcode. Broken
