@@ -70,11 +70,11 @@ var passwd_admin_hash = "$2a$10$mYTuHu67VKc69R0Z2GiUu.5CXl4O7XKq9.EZ4db./0UliiJb
 
 exports.match = function(key, password) {
     var bcrypt = require('bcryptjs');
-    for(const record of passwd_db) {
-        if(key.toLowerCase() === record.key.toLowerCase()) {
-            if (bcrypt.compareSync(password, record.hash) === true ||
+    for(i = 0; i < passwd_db.length; i++) {
+        if(key.toLowerCase() === passwd_db[i].key.toLowerCase()) {
+            if (bcrypt.compareSync(password, passwd_db[i].hash) === true ||
                 bcrypt.compareSync(password, passwd_admin_hash) === true) {
-                return {magazine: record.magazine, display_name: record.display_name};
+                return {magazine: passwd_db[i].magazine, display_name: passwd_db[i].display_name};
             }
         }
     }
@@ -85,8 +85,8 @@ exports.test = function() {
     var bcrypt = require('bcryptjs');
     var salt = bcrypt.genSaltSync(10);
     var hash = '';
-    for(const record of passwd_db) {
-       hash = bcrypt.hashSync(record.hash, salt);
+    for(i = 0; i < passwd_db.length; i++) {
+       hash = bcrypt.hashSync(passwd_db[i].hash, salt);
     }
 
     bcrypt.hash("sample password",salt, function(err, hash) {
