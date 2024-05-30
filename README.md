@@ -11,6 +11,4 @@ Editorial, marketing, and Pubwerks need to review digital editions for magazines
 
 ### How do I update the preview apps?
 
-Each brand has a preview app stored in `previewapps/<magazine name>/<magazine name>.ipa`. You can replace the ipa file with the latest version and ask devops to redeploy the preview app server. You should not need to modify the `manifest.plist` files when you update the ipa files.
-
-Should be easier with new Xcode. Broken
+Each brand has a preview app stored in `previewapps/<magazine name>/<magazine name>.ipa`. You can replace the ipa file with the latest version and then copy the file via Transmit to `publish.condenast.com`, the folder is `/data/de-node-previewapps/previewapps`. Each ipa is stored in a subfolders by brand so the path to the gq ipa is `/data/de-node-previewapps/previewapps/gq/gq.ipa`. You must replace the files with an ipa that has exactly the same name or it will not work.
