@@ -1,0 +1,74 @@
+---
+name: Service Catalog Metadata Provider
+
+on:
+  push:
+    paths:
+      - '.github/workflows/service.yml'
+
+jobs:
+  update-service-catalog-metadata:
+    if: ${{ github.ref_name == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: CondeNast/service-catalog-scripts@v1.1.0
+        with:
+          schema-version: v2.2
+          datadog-key: ${{ secrets.DATADOG_SERVICE_CATALOG_API_KEY }}
+          datadog-app-key: ${{ secrets.DATADOG_SERVICE_CATALOG_APPLICATION_KEY }}
+
+          # This maps to the "dd-service" field in Datadog, it's just the name of your service.
+          service-name: de-node-previewapps
+
+          description: |
+            The Pugpig Preview App Server facilitates the secure distribution of digital magazine editions to authorized editorial and marketing teams for review on iOS devices before public release.
+
+          # PII or non-PII
+          data-sensitivity: ''
+
+           # This is the application name, which is used to group services together.
+          service-group: de-node-previewapps
+
+          tier: 3
+
+          # This service is in production, so let's put that into the lifecycle field
+          lifecycle: production
+
+          # The name of the team which owns and/or supports the service.
+          team: De Node Previewapps Team
+
+           # The URL of the Slack channel where support for the service is handled.
+           # Keep in mind, this _must_ be a URL. To get the URL, right-click on the channel
+           # in the Slack app, and select "Copy link" in the "Copy" submenu.
+          slack: ''
+
+          # Links are great for runbooks, other documentation, other services which
+          # could be helpful, as well as dashboards. In v2.1 repos and docs move here.
+          links: |
+            - name: de-node-previewapps
+              url: https://github.com/CondeNast/de-node-previewapps
+              type: repo
+              provider: github
+            - name: de-node-previewapps docs
+              url: https://github.com/CondeNast/de-node-previewapps/tree/main/docs
+              type: doc
+              provider: Web
+            - name: de-node-previewapps runbook
+              url: 
+              type: runbook
+              provider: Confluence
+            - name: de-node-previewapps dashboard
+              url: 
+              type: dashboard
+              provider: Web
+            - name: de-node-previewapps error logs
+              url: 
+              type: dashboard
+              provider: Web
+
+          # This will allow people to directly page a team when seeing a failing service. To find your pagerduty url go to PagerDuty -> Service Directory -> Find your service -> Copy the direct link to your service.
+          pagerduty: ''
+          
+          # A list of individuals who can be contacted about the service.
+          contacts: |
+
